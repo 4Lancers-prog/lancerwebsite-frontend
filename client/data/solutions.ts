@@ -1,0 +1,92 @@
+import { Rocket, ShoppingCart, Briefcase, Home, GraduationCap, HeartPulse, Truck, Factory } from 'lucide-react'
+import type { Solution } from './types'
+
+/**
+ * Only keep industries where 4lancers has genuine experience or capability.
+ * Remove any entry you cannot back up in a sales conversation.
+ */
+export const solutions: Solution[] = [
+  {
+    slug: 'startups',
+    industry: 'Startups',
+    icon: Rocket,
+    intro: 'Founders need to launch fast without building on foundations they will have to throw away.',
+    challenges: ['Limited time and budget to reach a usable product', 'No in-house technical team yet', 'Need to validate before investing heavily'],
+    solutions: ['MVP scoping and product discovery', 'Web / mobile / SaaS application development', 'Launch websites and landing pages', 'Automated onboarding and support'],
+    workflow: ['Idea', 'Prototype', 'MVP', 'Launch', 'Iterate'],
+    services: ['application-development', 'website-development'],
+  },
+  {
+    slug: 'ecommerce-retail',
+    industry: 'E-commerce & Retail',
+    icon: ShoppingCart,
+    intro: 'Orders, stock, customer questions and follow-ups multiply faster than teams can handle them manually.',
+    challenges: ['Repetitive “where is my order?” queries', 'Stock and orders out of sync across channels', 'Abandoned carts and missed repeat purchases'],
+    solutions: ['WhatsApp order updates and support bots', 'Inventory and order management systems', 'E-commerce websites with integrations', 'Automated re-engagement campaigns'],
+    workflow: ['Order placed', 'Stock updated', 'WhatsApp confirmation', 'Dispatch tracking', 'Review & re-order nudge'],
+    services: ['ai-automation', 'software-development', 'website-development'],
+    relatedProject: 'whatsapp-lead-automation',
+  },
+  {
+    slug: 'professional-services',
+    industry: 'Professional Services',
+    icon: Briefcase,
+    intro: 'Consultancies, agencies and firms lose hours to intake, scheduling, documents and client updates.',
+    challenges: ['Manual client intake and qualification', 'Scheduling back-and-forth', 'Documents collected over email and chat'],
+    solutions: ['AI chatbots for enquiry qualification', 'Appointment booking automation', 'Client portals and document automation', 'Custom CRM for pipeline and delivery'],
+    workflow: ['Enquiry', 'Qualification', 'Booking', 'Client portal', 'Delivery tracking'],
+    services: ['ai-automation', 'software-development'],
+  },
+  {
+    slug: 'real-estate',
+    industry: 'Real Estate',
+    icon: Home,
+    intro: 'High lead volumes from portals and ads, where speed of response decides who gets the site visit.',
+    challenges: ['Leads from many sources, handled inconsistently', 'Slow first response loses buyers', 'Site-visit scheduling and follow-ups are manual'],
+    solutions: ['Instant WhatsApp and voice lead qualification', 'Real-estate CRM with auto-assignment', 'Site-visit booking and reminders', 'Project microsites and landing pages'],
+    workflow: ['Portal / ad lead', 'Instant WhatsApp reply', 'Qualification', 'Site visit booked', 'Sales follow-up'],
+    services: ['ai-automation', 'software-development', 'website-development'],
+    relatedProject: 'whatsapp-lead-automation',
+  },
+  {
+    slug: 'education',
+    industry: 'Education',
+    icon: GraduationCap,
+    intro: 'Schools, colleges and institutes juggle admissions, fees, communication and records across disconnected tools.',
+    challenges: ['Admission enquiries peak and overwhelm staff', 'Fee reminders and parent communication are manual', 'Student data lives in spreadsheets'],
+    solutions: ['Admission enquiry bots on WhatsApp and web', 'School / institute management software', 'Automated fee and attendance notifications', 'Parent and student apps'],
+    workflow: ['Enquiry', 'Counselling booked', 'Admission', 'Fee reminders', 'Parent updates'],
+    services: ['ai-automation', 'software-development', 'application-development'],
+  },
+  {
+    slug: 'healthcare',
+    industry: 'Healthcare & Clinics',
+    icon: HeartPulse,
+    intro: 'Clinics need patients booked, reminded and informed — without front-desk staff living on the phone.',
+    challenges: ['Phone lines busy with booking and timing questions', 'No-shows from missed reminders', 'Patient records scattered across tools'],
+    solutions: ['AI voice agents and WhatsApp booking', 'Automated appointment reminders', 'Clinic management and patient portals', 'Secure, role-based data access'],
+    workflow: ['Call / WhatsApp', 'Slot booked', 'Reminder sent', 'Visit', 'Follow-up'],
+    services: ['ai-automation', 'software-development'],
+  },
+  {
+    slug: 'logistics',
+    industry: 'Logistics & Transport',
+    icon: Truck,
+    intro: 'Bookings, dispatch, drivers and customer updates need to move in real time.',
+    challenges: ['Booking and dispatch handled over calls', 'Customers keep asking for status', 'No live view of vehicles and trips'],
+    solutions: ['Booking apps and WhatsApp booking flows', 'Dispatch and fleet dashboards', 'Automated status notifications', 'Driver apps'],
+    workflow: ['Booking', 'Auto-dispatch', 'Driver app', 'Live status', 'Invoice'],
+    services: ['application-development', 'ai-automation', 'software-development'],
+  },
+  {
+    slug: 'manufacturing',
+    industry: 'Manufacturing',
+    icon: Factory,
+    intro: 'Production, inventory and orders tracked on paper and spreadsheets make planning a guessing game.',
+    challenges: ['No real-time view of production stages', 'Inventory mismatches and material delays', 'Order status depends on phone calls to the floor'],
+    solutions: ['Custom factory / production management ERP', 'Inventory and purchase management', 'Order tracking dashboards', 'Automated alerts to supervisors'],
+    workflow: ['Order', 'Material check', 'Production stages', 'QC', 'Dispatch'],
+    services: ['software-development', 'application-development'],
+    relatedProject: 'factory-operations-erp',
+  },
+]

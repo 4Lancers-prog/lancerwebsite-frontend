@@ -1,0 +1,128 @@
+@import 'tailwindcss';
+
+/* Self-hosted variable fonts — Latin subset only (keeps preloads small). */
+@font-face {
+  font-family: 'Outfit Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('./fonts/outfit-latin-wght-normal.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('./fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+/*
+ * 4lancers brand tokens — the ONLY place raw colour values live.
+ * Brand blue sampled from the logo: #5B7CB1.
+ */
+@theme {
+  --color-background: #06080d;
+  --color-foreground: #f4f6fb;
+  --color-surface: #0c1019;
+  --color-surface-2: #121826;
+  --color-muted: #8d97ab;
+  --color-muted-2: #5d6679;
+  --color-border: #1c2333;
+  --color-border-strong: #2a3449;
+
+  --color-primary: #5b7cb1;
+  --color-primary-hover: #6d8ec4;
+  --color-primary-foreground: #ffffff;
+  --color-primary-soft: #5b7cb11f;
+  --color-accent: #9fb8e3;
+  --color-success: #4ade80;
+  --color-danger: #f87171;
+
+  /* 'legacy' palette — used only for the BEFORE side of comparisons */
+  --color-legacy: #15110e;
+  --color-legacy-surface: #1e1916;
+  --color-legacy-border: #4a3b33;
+  --color-legacy-fg: #b9a89d;
+  --color-legacy-accent: #c7866a;
+
+  --font-display: 'Outfit Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --shadow-glow: 0 0 0 1px #5b7cb140, 0 20px 60px -20px #5b7cb166;
+  --shadow-card: 0 1px 0 0 #ffffff0d inset, 0 30px 60px -30px #00000099;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee-reverse: marquee 38s linear infinite reverse;
+  --animate-spin-slow: spin 60s linear infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-balance;
+  }
+  p { @apply text-pretty; }
+  ::selection { @apply bg-primary text-primary-foreground; }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary rounded-md;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+@utility mask-fade-y {
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+@utility mask-radial {
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+@utility text-gradient {
+  background-image: linear-gradient(120deg, var(--color-foreground) 20%, var(--color-accent) 60%, var(--color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* Custom cursor only hides the native one on fine pointers */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-custom-cursor,
+  html.has-custom-cursor *:not(input):not(textarea):not(select) { cursor: none !important; }
+}
