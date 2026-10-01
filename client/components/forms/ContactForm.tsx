@@ -21,10 +21,10 @@ const schema = z.object({
   phone: z
     .string()
     .trim()
+    .min(6, 'Please enter your phone / WhatsApp number')
     .max(20)
     .regex(/^[+\d\s()-]*$/, 'Only digits, spaces and + ( ) - please')
-    .optional()
-    .or(z.literal('')),
+    .refine((v) => (v.match(/\d/g) ?? []).length >= 6, 'Please enter a valid phone number'),
   website: z.string().trim().max(200).optional().or(z.literal('')),
   solutionType: z.enum(reqValues, { message: 'Pick the closest option — “Not sure yet” is fine' }),
   message: z.string().trim().min(20, 'A couple of sentences helps us prepare (20+ characters)').max(4000),
@@ -132,8 +132,8 @@ export function ContactForm({ defaultRequirement }: { defaultRequirement?: Requi
           <FormField id="email" label="Business email" error={errors.email?.message}>
             <Input id="email" type="email" autoComplete="email" placeholder="you@company.com" {...register('email')} {...err('email')} />
           </FormField>
-          <FormField id="phone" label="Phone / WhatsApp" optional error={errors.phone?.message}>
-            <Input id="phone" type="tel" autoComplete="tel" placeholder="+91" {...register('phone')} {...err('phone')} />
+          <FormField id="phone" label="Phone / WhatsApp" error={errors.phone?.message}>
+            <Input id="phone" type="tel" autoComplete="tel" placeholder="+91" required {...register('phone')} {...err('phone')} />
           </FormField>
         </div>
       </fieldset>
